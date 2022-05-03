@@ -5,6 +5,8 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+  workflow_dispatch:
+  
 
 jobs:
 
@@ -17,4 +19,4 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag eavilesz/sample
     - name: Push the Docker image 
-    run: docker login -u eavilesz -p ${{ secrets.DOCKER_TOKEN }} && docker push eavilesz/sample
+      run: docker login -u eavilesz -p ${{ secrets.DOCKER_TOKEN }} && docker push eavilesz/sample
